@@ -23,10 +23,7 @@ public class ChatBot {
 
     // ── DAO ──────────────────────────────────────────────────────────────
     private final JadwalIbadahDAO jadwalIbadahDAO = new JadwalIbadahDAO();
-    private final LokasiDAO lokasiDAO = new LokasiDAO();
-    private final RenunganDAO renunganDAO = new RenunganDAO();
-    private final PengumumanDAO pengumumanDAO = new PengumumanDAO();
-    private final JadwalTugasDAO jadwalTugasDAO = new JadwalTugasDAO();
+
 
     // ── Enum Intent ───────────────────────────────────────────────────────
     private enum Intent {
@@ -84,11 +81,7 @@ public class ChatBot {
     public String displayJawaban(Intent intent, String input) {
         return switch (intent) {
             case JADWAL_IBADAH  -> responJadwalIbadah();
-            case LOKASI         -> responLokasi();
-            case RENUNGAN       -> responRenungan();
-            case PENGUMUMAN     -> responPengumuman();
             case KONTAK         -> responKontak();
-            case JADWAL_TUGAS   -> responJadwalTugas();
             case SAPAAN         -> responSapaan();
             case BANTUAN        -> responBantuan();
             default             -> responTidakDikenali(input);
@@ -182,90 +175,16 @@ public class ChatBot {
         return sb.toString().trim();
     }
 
-    /** UC-2: Lokasi Gereja */
-    private String responLokasi() {
-        List<Lokasi> list = lokasiDAO.getAll();
-        if (list.isEmpty()) {
-            return "📍 Informasi lokasi gereja belum tersedia.\n" +
-                   "Silakan hubungi pengurus untuk informasi lebih lanjut.";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("📍 LOKASI RUMAH IBADAH\n");
-        sb.append("─".repeat(35)).append("\n\n");
-        for (Lokasi l : list) {
-            sb.append(l.tampilkan()).append("\n\n");
-        }
-        return sb.toString().trim();
-    }
 
-    /** UC-6: Renungan Harian */
-    private String responRenungan() {
-        Renungan r = renunganDAO.getHariIni();
-        if (r == null) {
-            return "📖 Renungan harian sedang disiapkan.\n" +
-                   "Silakan cek kembali nanti.";
-        }
 
-        // Cek apakah renungan hari ini atau renungan sebelumnya
-        boolean isToday = r.getTanggal() != null &&
-                r.getTanggal().equals(LocalDate.now());
-
-        String prefix = isToday ? "" : "\n⚠️ (Renungan terbaru yang tersedia)\n\n";
-        return prefix + r.tampilkan();
-    }
-
-    /** UC-8: Pengumuman Gereja */
-    private String responPengumuman() {
-        List<Pengumuman> list = pengumumanDAO.getLatest(5);
-        if (list.isEmpty()) {
-            return "📢 Belum ada pengumuman saat ini.";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("📢 PENGUMUMAN GEREJA\n");
-        sb.append("─".repeat(35)).append("\n\n");
-        for (Pengumuman p : list) {
-            sb.append(p.tampilkan()).append("\n\n");
-        }
-        return sb.toString().trim();
-    }
 
     /** Kontak Pengurus (bagian dari UC-2) */
     private String responKontak() {
-        List<Lokasi> list = lokasiDAO.getAll();
-        if (list.isEmpty()) {
-            return "📞 Informasi kontak pengurus belum tersedia.\nSilakan kunjungi gereja secara langsung.";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("📞 KONTAK PENGURUS GEREJA\n");
-        sb.append("─".repeat(35)).append("\n\n");
-        for (Lokasi l : list) {
-            sb.append("🏛️ ").append(l.getNamaTempat()).append("\n");
-            sb.append("   Kontak : ").append(l.getKontak()).append("\n\n");
-        }
-        return sb.toString().trim();
+
+        return "📞 Informasi kontak pengurus belum tersedia.\nSilakan kunjungi gereja secara langsung.";
+
     }
 
-    /** UC-4: Jadwal Tugas Majelis (hanya jika login sebagai Majelis) */
-    private String responJadwalTugas() {
-        if (loggedUser == null || !"majelis".equals(loggedUser.getRole())) {
-            return "🔒 Fitur ini hanya tersedia untuk Majelis yang telah login.\n" +
-                   "Silakan login terlebih dahulu melalui tombol Login di bawah.";
-        }
-
-        List<JadwalTugas> list = jadwalTugasDAO.getByMajelis(loggedUser.getIdUser());
-        if (list.isEmpty()) {
-            return "📋 Anda belum memiliki jadwal tugas pelayanan untuk saat ini.";
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("📋 JADWAL TUGAS PELAYANAN\n");
-        sb.append("Majelis: ").append(loggedUser.getNama()).append("\n");
-        sb.append("─".repeat(35)).append("\n\n");
-        for (JadwalTugas jt : list) {
-            sb.append(jt.tampilkan()).append("\n\n");
-        }
-        return sb.toString().trim();
-    }
 
     /** Respon sapaan */
     private String responSapaan() {

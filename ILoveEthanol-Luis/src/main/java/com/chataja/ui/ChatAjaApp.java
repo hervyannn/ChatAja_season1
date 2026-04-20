@@ -33,8 +33,6 @@ public class ChatAjaApp extends Application {
     private StackPane contentArea;
 
     private ChatView chatView;
-    private AdminView adminView;
-    private MajelisView majelisView;
 
     private Button btnNewChat;
     private Button btnLogin;
@@ -85,12 +83,10 @@ public class ChatAjaApp extends Application {
         root.setStyle("-fx-background-color: " + COLOR_BG + ";");
 
         chatView    = new ChatView(chatBot);
-        adminView   = new AdminView(currentUser);
-        majelisView = new MajelisView(currentUser, chatBot);
 
         contentArea = new StackPane();
         contentArea.setStyle("-fx-background-color: " + COLOR_BG + ";");
-        contentArea.getChildren().addAll(chatView, adminView, majelisView);
+        contentArea.getChildren().addAll(chatView);
         showChatView();
 
         sidebar = buildSidebar();
@@ -178,10 +174,6 @@ public class ChatAjaApp extends Application {
         btnNavPengumuman   = sidebarButton("Pengumuman",    false);
         btnNavRenungan     = sidebarButton("Renungan",      false);
 
-        btnNavJadwalIbadah.setOnAction(e -> { adminView.showJadwalIbadah(); showAdminView(); setActiveNav(btnNavJadwalIbadah); });
-        btnNavJadwalTugas .setOnAction(e -> { adminView.showJadwalTugas();  showAdminView(); setActiveNav(btnNavJadwalTugas); });
-        btnNavPengumuman  .setOnAction(e -> { majelisView.showPengumuman(); showMajelisView(); setActiveNav(btnNavPengumuman); });
-        btnNavRenungan    .setOnAction(e -> { majelisView.showRenungan();   showMajelisView(); setActiveNav(btnNavRenungan); });
 
         Button btnNavChat = sidebarButton("Chat", false);
         btnNavChat.setOnAction(e -> { showChatView(); setActiveNav(btnNavChat); });
@@ -268,22 +260,14 @@ public class ChatAjaApp extends Application {
 
     private void showChatView() {
         chatView.setVisible(true);    chatView.setManaged(true);
-        adminView.setVisible(false);  adminView.setManaged(false);
-        majelisView.setVisible(false); majelisView.setManaged(false);
     }
 
     private void showAdminView() {
-        adminView.refresh();
         chatView.setVisible(false);   chatView.setManaged(false);
-        adminView.setVisible(true);   adminView.setManaged(true);
-        majelisView.setVisible(false); majelisView.setManaged(false);
     }
 
     private void showMajelisView() {
-        majelisView.refresh();
         chatView.setVisible(false);    chatView.setManaged(false);
-        adminView.setVisible(false);   adminView.setManaged(false);
-        majelisView.setVisible(true);  majelisView.setManaged(true);
     }
 
     // ── Login / Logout ────────────────────────────────────────────────
@@ -370,13 +354,7 @@ public class ChatAjaApp extends Application {
             navSection.getChildren().remove(1);
         }
 
-        if ("admin".equals(user.getRole())) {
-            navSection.getChildren().addAll(btnNavJadwalIbadah, btnNavJadwalTugas);
-            adminView.setUser(user);
-        } else if ("majelis".equals(user.getRole())) {
-            navSection.getChildren().addAll(btnNavPengumuman, btnNavRenungan);
-            majelisView.setUser(user);
-        }
+
 
         chatView.addBotMessage("✅ Selamat datang, " + user.getNama() + "!\n" +
                 "Anda login sebagai " + user.getRole().substring(0, 1).toUpperCase() +

@@ -1,22 +1,12 @@
-D:\ILoveEthanol\src\main\java\com\chataja\chatbot\ChatBot.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\JadwalIbadahDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\JadwalTugasDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\LokasiDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\PengumumanDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\RenunganDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\dao\UserDAO.java
-D:\ILoveEthanol\src\main\java\com\chataja\db\DatabaseManager.java
-D:\ILoveEthanol\src\main\java\com\chataja\Main.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\Admin.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\JadwalIbadah.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\JadwalTugas.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\Lokasi.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\Majelis.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\Pengumuman.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\Renungan.java
-D:\ILoveEthanol\src\main\java\com\chataja\model\User.java
-D:\ILoveEthanol\src\main\java\com\chataja\ui\AdminView.java
-D:\ILoveEthanol\src\main\java\com\chataja\ui\ChatAjaApp.java
-D:\ILoveEthanol\src\main\java\com\chataja\ui\ChatView.java
-D:\ILoveEthanol\src\main\java\com\chataja\ui\LoginDialog.java
-D:\ILoveEthanol\src\main\java\com\chataja\ui\MajelisView.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\chatbot\ChatBot.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\dao\JadwalIbadahDAO.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\dao\UserDAO.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\db\DatabaseManager.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\Main.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\model\Admin.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\model\JadwalIbadah.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\model\Majelis.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\model\User.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\ui\ChatAjaApp.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\ui\ChatView.java
+C:\Users\LENOVO\Documents\TUGAS KULIAH SEMESTER 1\SEMESTER 4\RPLBO\40 persen progres\ChatAja_season1\ILoveEthanol-Luis\src\main\java\com\chataja\ui\LoginDialog.java
