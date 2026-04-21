@@ -25,18 +25,4 @@ public class Admin extends User {
         System.out.println("[Admin] " + getNama() + " logout.");
     }
 
-    /** Operasi tambah data ke sistem */
-    public void tambahData(String jenis) {
-        System.out.println("[Admin] Menambahkan data: " + jenis);
-    }
-
-    /** Operasi hapus data dari sistem */
-    public void hapusData(String jenis, String id) {
-        System.out.println("[Admin] Menghapus data " + jenis + " id=" + id);
-    }
-
-    /** Operasi edit data di sistem */
-    public void editData(String jenis, String id) {
-        System.out.println("[Admin] Mengedit data " + jenis + " id=" + id);
-    }
 }

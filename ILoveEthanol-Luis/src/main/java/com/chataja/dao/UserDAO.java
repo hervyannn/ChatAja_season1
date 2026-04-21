@@ -37,71 +37,9 @@ public class UserDAO {
         return null;
     }
 
-    /** Mengambil semua user dengan role majelis */
-    public List<User> getAllMajelis() {
-        return getUsersByRole("majelis");
-    }
 
-    /** Mengambil semua user berdasarkan role */
-    public List<User> getUsersByRole(String role) {
-        List<User> list = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE role=? ORDER BY nama";
-        try (Connection conn = DatabaseManager.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, role);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) list.add(mapUser(rs));
-        } catch (SQLException e) {
-            System.err.println("[UserDAO] getUsersByRole error: " + e.getMessage());
-        }
-        return list;
-    }
 
-    /** Tambah user baru (majelis) */
-    public boolean insert(User user) {
-        String sql = "INSERT INTO users (id_user,nama,username,password,role) VALUES (?,?,?,?,?)";
-        try (Connection conn = DatabaseManager.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, generateId());
-            ps.setString(2, user.getNama());
-            ps.setString(3, user.getUsername());
-            ps.setString(4, user.getPassword());
-            ps.setString(5, user.getRole());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("[UserDAO] insert error: " + e.getMessage());
-            return false;
-        }
-    }
 
-    /** Update user */
-    public boolean update(User user) {
-        String sql = "UPDATE users SET nama=?,username=?,password=? WHERE id_user=?";
-        try (Connection conn = DatabaseManager.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, user.getNama());
-            ps.setString(2, user.getUsername());
-            ps.setString(3, user.getPassword());
-            ps.setString(4, user.getIdUser());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("[UserDAO] update error: " + e.getMessage());
-            return false;
-        }
-    }
-
-    /** Hapus user berdasarkan ID */
-    public boolean delete(String idUser) {
-        String sql = "DELETE FROM users WHERE id_user=?";
-        try (Connection conn = DatabaseManager.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, idUser);
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("[UserDAO] delete error: " + e.getMessage());
-            return false;
-        }
-    }
 
     // ── Private helpers ────────────────────────────────────────────────────
 
@@ -123,7 +61,5 @@ public class UserDAO {
         return u;
     }
 
-    private String generateId() {
-        return "USR" + String.format("%05d", System.currentTimeMillis() % 100000);
-    }
+
 }

@@ -24,13 +24,5 @@ public class Majelis extends User {
         System.out.println("[Majelis] " + getNama() + " logout.");
     }
 
-    /** Mengelola pengumuman (tambah/edit/hapus) */
-    public void kelolaPengumuman(String aksi) {
-        System.out.println("[Majelis] " + getNama() + " - " + aksi + " pengumuman.");
-    }
 
-    /** Mengelola renungan harian (tambah/edit/hapus) */
-    public void kelolaRenungan(String aksi) {
-        System.out.println("[Majelis] " + getNama() + " - " + aksi + " renungan.");
-    }
 }
